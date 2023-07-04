@@ -21,6 +21,7 @@ const Input = ({ label, value, onChange, name }: InputProps) => {
         id={label}
         name={name}
         onChange={onChange}
+        placeholder="0"
         className="w-[30%] px-2 py-2 border rounded border-slate-400 sm:w-[30%]"
       />
     </div>

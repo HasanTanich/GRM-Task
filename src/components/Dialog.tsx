@@ -22,11 +22,13 @@ const Dialog = ({ open, onClose, children }: DialogProps) => {
     <div className="fixed inset-0 z-10 bg-zinc-900/50">
       <div className="container flex items-center justify-center h-full max-w-2xl mx-auto">
         <div
-          className="relative bg-white w-[90%] h-fit pt-16 pb-32 px-2 rounded-lg"
+          className="relative bg-white w-[90%] h-fit pt-20 pb-28 px-2 rounded-lg"
           ref={dialogRef}
         >
+          <h3 className="absolute w-3/4 text-lg font-semibold top-4 left-4 text-slate-800">
+            Fill in the required fields please
+          </h3>
           <CloseButton onClick={onClose} />
-          <div className="w-full"></div>
           {children}
         </div>
       </div>
