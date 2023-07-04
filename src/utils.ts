@@ -18,7 +18,7 @@ export function pickAPair(
     pairedSet.add(`${item2.id}-${item1.id}`);
   }
 
-  // pickTwoRandomNumbers function will run until finding non-existen pair in pairedSet
+  // pickTwoRandomNumbers is a recursive function that will run until finding non-existen pair from pairedSet
   const pair = pickTwoRandomNumbers(array.length, pairedSet, array);
 
   return pair;
@@ -42,6 +42,7 @@ function pickTwoRandomNumbers(
   const pairKey1 = `${item1.id}-${item2.id}`;
   const pairKey2 = `${item2.id}-${item1.id}`;
 
+  // if the numbers generated make a new pair that doesn't exist in pairedSet, return the pair
   if (!pairedSet.has(pairKey1) && !pairedSet.has(pairKey2)) {
     return [item1, item2];
   }

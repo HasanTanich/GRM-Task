@@ -1,7 +1,7 @@
 import { useState } from "react";
+import { type ListItem } from "../types/ListItem";
 import { Button } from "./Button";
 import Input from "./Input";
-import { type ListItem } from "../types/ListItem";
 
 interface FormValues {
   input1: string;
