@@ -5,6 +5,7 @@ import Form from "./components/Form";
 import Table from "./components/Table";
 import { type ListItem } from "./types/ListItem";
 import { pickAPair } from "./utils";
+import Toaster from "./components/Toaster";
 
 const initialList: ListItem[] = [
   {
@@ -55,14 +56,17 @@ function App() {
   const [pairedItems, setPairedItems] = useState<ListItem[][]>([
     [firstItem, secondItem],
   ]);
-
+  const [showToaster, setShowToaster] = useState(false);
   const [isFormDialogOpen, setIsFormDialogOpen] = useState(false);
+  const [winnerName, setWinnerName] = useState("");
 
   const onCloseDialog = () => {
     setIsFormDialogOpen(false);
   };
 
   const onSubmitForm = (biggerValueItem: ListItem) => {
+    setShowToaster(true);
+    setWinnerName(biggerValueItem.name);
     const pair = pickAPair(list, pairedItems);
     setIsFormDialogOpen(false);
 
@@ -94,6 +98,7 @@ function App() {
   };
 
   const handleButtonClick = () => {
+    setShowToaster(false);
     setIsFormDialogOpen(true);
   };
 
@@ -110,7 +115,7 @@ function App() {
   };
 
   return (
-    <div className="container h-full px-6 pt-12 mx-auto max-w-7xl">
+    <div className="container h-full px-6 pt-12 pb-6 mx-auto max-w-7xl">
       <div className="flex flex-col">
         <div className="overflow-x-auto">
           <div className="inline-block min-w-full py-2">
@@ -140,6 +145,7 @@ function App() {
           <Form item1={item1} item2={item2} onSubmit={onSubmitForm} />
         )}
       </Dialog>
+      {showToaster && <Toaster message={`+1 score added to ${winnerName}`} />}
     </div>
   );
 }
